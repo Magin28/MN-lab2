@@ -36,7 +36,15 @@ def compare_plot(x1:np.ndarray,y1:np.ndarray,x2:np.ndarray,y2:np.ndarray,
     matplotlib.pyplot.figure  
         Wykres porównujący dane (x1, y1) i (x2, y2), zgodny z opisem z zadania 3.  
     """
-    return None
+
+    if x1.shape != x2.shape or y1.shape != y2.shape or min(x1.shape)==0 or min(x2.shape)==0 or min(y1.shape)==0 or min(y2.shape)==0 :
+        return None
+    fig, ax = plt.subplots()
+    ax.plot(x1, y1, 'b', label=label1)
+    ax.plot(x2, y2, 'r', label=label2)
+    ax.set(xlabel=xlabel, ylabel=ylabel, title=title)
+    ax.legend()
+    return fig
 
 
 def parallel_plot(x1:np.ndarray,y1:np.ndarray,x2:np.ndarray,y2:np.ndarray,
